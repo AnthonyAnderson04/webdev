@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Hub - Your Team's Official Site</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/team_logo.png" alt="Team Logo">
+                <h1>[Your Team Name]</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#roster">Roster</a></li>
+                    <li><a href="#schedule">Schedule & Results</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Welcome to the Official Home of [Your Team Name]</h2>
+                <p>Catch the latest news, highlights, and behind-the-scenes content!</p>
+                <a href="#videos" class="btn">Watch Highlights</a>
+            </div>
+        </section>
+
+        <section id="news" class="news-feed">
+            <div class="container">
+                <h2>Latest News</h2>
+                <div class="news-articles">
+                    <!-- News articles will be loaded dynamically here -->
+                    <article class="news-item">
+                        <img src="images/news1.jpg" alt="News Image 1">
+                        <h3>Team Secures Playoff Berth!</h3>
+                        <p>A thrilling victory last night guarantees our spot in the playoffs. Read the full recap...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </article>
+                    <article class="news-item">
+                        <img src="images/news2.jpg" alt="News Image 2">
+                        <h3>Player Spotlight: [Player Name]</h3>
+                        <p>Get to know our star player, [Player Name], with an exclusive interview and highlights reel...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="photo-gallery">
+            <div class="container">
+                <h2>Photo Gallery</h2>
+                <div class="gallery-grid">
+                    <!-- Images will be loaded dynamically here -->
+                    <img src="images/gallery1.jpg" alt="Game Action Shot 1">
+                    <img src="images/gallery2.jpg" alt="Team Celebration">
+                    <img src="images/gallery3.jpg" alt="Player Action Shot">
+                    <img src="images/gallery4.jpg" alt="Fan Interaction">
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="video-highlights">
+            <div class="container">
+                <h2>Video Highlights</h2>
+                <div class="video-grid">
+                    <!-- Videos will be loaded dynamically here -->
+                    <div class="video-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Game Winner vs [Opponent]</h3>
+                    </div>
+                    <div class="video-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h3>Best Dunks of the Season</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other sections like Roster, Schedule, Contact, Shop would go here -->
+        </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; [Current Year] [Your Team Name]. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+// Example for dynamic content loading (e.g., news articles)
+document.addEventListener('DOMContentLoaded', () => {
+    const newsFeed = document.querySelector('.news-articles');
+
+    // In a real application, this data would come from a backend API or database
+    const newsData = [
+        {
+            image: 'images/news3.jpg',
+            title: 'Coach Announces New Training Regimen',
+            excerpt: 'The team is gearing up for the new season with an intensive new training program designed to boost performance...',
+            link: '#'
+        },
+        {
+            image: 'images/news4.jpg',
+            title: 'Fan Fest Date Confirmed!',
+            excerpt: 'Mark your calendars! Our annual Fan Fest will be held on [Date] at [Location]. Free entry and lots of activities...',
+            link: '#'
+        }
+    ];
+
+    newsData.forEach(article => {
+        const articleElement = document.createElement('article');
+        articleElement.classList.add('news-item');
+        articleElement.innerHTML = `
+            <img src="${article.image}" alt="${article.title}">
+            <h3>${article.title}</h3>
+            <p>${article.excerpt}</p>
+            <a href="${article.link}" class="read-more">Read More</a>
+        `;
+        newsFeed.appendChild(articleElement);
+    });
+
+    // Example for a simple image gallery interaction (e.g., lightbox)
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
+    galleryImages.forEach(image => {
+        image.addEventListener('click', () => {
+            // Implement a lightbox or modal here to show a larger version of the image
+            console.log('Image clicked:', image.src);
+            alert('Imagine a lightbox showing a larger image here!');
+        });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero_background.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Section Styling (News, Gallery, Videos) */
+section {
+    padding: 40px 0;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.news-articles, .gallery-grid, .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.news-item, .video-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.news-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.video-item iframe {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .social-links img {
+    width: 30px;
+    margin: 0 10px;
+}
